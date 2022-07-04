@@ -2,9 +2,9 @@ import 'package:dev/app/data/models/user.dart';
 import 'package:dev/app/data/services/app_config/service.dart';
 import 'package:dev/app/data/services/auth/service.dart';
 import 'package:dev/app/modules/login/repository.dart';
+import 'package:dev/core/utils/remove_splash.dart';
 import 'package:dev/core/utils/verify_response.dart';
 import 'package:dev/routes/pages.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -18,7 +18,10 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+    removeSplash();
+
     reauth();
+
     super.onInit();
   }
 
@@ -36,13 +39,9 @@ class LoginController extends GetxController {
         duration: const Duration(seconds: 2),
       ));
     } else {
+      config.changeIsLogged(true);
       Get.offNamed(Routes.DASH);
     }
-  }
-
-  changeTheme() {
-    darkMode.value = !darkMode.value;
-    config.changeDarkMode(darkMode.value);
   }
 
   onChangeEmail(_) {
