@@ -27,7 +27,7 @@ class LoginController extends GetxController {
 
   reauth() async {
     if (config.isLogged()) {
-      Get.offNamed(Routes.DASH);
+      Get.offNamed(Routes.HOME);
     }
   }
 
@@ -40,7 +40,7 @@ class LoginController extends GetxController {
       ));
     } else {
       config.changeIsLogged(true);
-      Get.offNamed(Routes.DASH);
+      Get.offNamed(Routes.HOME);
     }
   }
 

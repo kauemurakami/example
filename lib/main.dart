@@ -1,9 +1,5 @@
 import 'package:dev/app/data/services/app_config/service.dart';
 import 'package:dev/app/data/services/auth/service.dart';
-import 'package:dev/app/modules/dashboard/binding.dart';
-import 'package:dev/app/modules/dashboard/page.dart';
-import 'package:dev/app/modules/login/binding.dart';
-import 'package:dev/app/modules/login/page.dart';
 import 'package:dev/core/theme/app_theme.dart';
 import 'package:dev/routes/pages.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +13,6 @@ void main() async {
   await Get.putAsync(() => AuthService().init());
 
   runApp(GetMaterialApp(
-    home: LoginPage(),
-    initialBinding: LoginBinding(),
     initialRoute: Routes.LOGIN,
     getPages: AppPages.pages,
     theme: GlobalTheme.globalTheme,
