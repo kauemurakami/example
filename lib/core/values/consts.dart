@@ -9,4 +9,4 @@ const jsonUsers = {
 const IMAGES = 'assets/images/';
 
 const CAT_API_KEY = 'cfc155ea-de7b-407a-beab-e34e161232ae';
-const DOG_API_KEY = '';
+const DOG_API_KEY = 'cfd92bfa-f212-4a73-8792-5ef7271a0045';

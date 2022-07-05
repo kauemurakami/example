@@ -1,7 +1,7 @@
-import 'package:example/app/data/widgets/custom_tff.dart';
 import 'package:example/app/modules/login/controller.dart';
-import 'package:example/core/theme/text_theme.dart';
-import 'package:example/core/values/colors.dart';
+import 'package:example/app/modules/login/widgets/form.dart';
+import 'package:example/app/modules/login/widgets/top_section.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,63 +16,13 @@ class LoginPage extends GetView<LoginController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(),
-              IconButton(
-                  onPressed: () => controller.changeTheme(),
-                  icon: Obx(
-                    () => Icon(controller.darkMode.value
-                        ? Icons.light_mode
-                        : Icons.dark_mode),
-                  )),
-            ],
-          ),
+          const TopSectionWidget(),
           Expanded(child: Container()),
           Expanded(
-            flex: 3,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Obx(
-                    () => CustomTffWidget(
-                      marginTop: 16.0,
-                      text: 'E-mail',
-                      onSaved: (_) => controller.onSavedEmail(_),
-                      onChanged: (_) => controller.onChangeEmail(_),
-                      onValidate: (_) => controller.onValidateEmail(_),
-                      icon: Icon(
-                        Icons.check,
-                        color: controller.isEmail.value
-                            ? Colors.green
-                            : Colors.grey,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 16.0),
-                    child: MaterialButton(
-                      onPressed: () {
-                        FormState formState = _formKey.currentState!;
-                        if (formState.validate()) {
-                          controller.login();
-                        }
-                      },
-                      color: tumbleweed,
-                      splashColor: desert_sand,
-                      child: const Text(
-                        'Entrar',
-                        style: text_white,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+              flex: 3,
+              child: LoginFormwidget(
+                formkey: _formKey,
+              )),
         ],
       ),
     )));

@@ -14,7 +14,6 @@ void main() async {
   await Get.putAsync(() => AuthService().init());
 
   runApp(GetMaterialApp(
-    home: LoginPage(),
     initialBinding: LoginBinding(),
     initialRoute: Routes.LOGIN,
     getPages: AppPages.pages,

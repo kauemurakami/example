@@ -4,4 +4,8 @@ class HomeRepository {
   final MyApi api;
 
   HomeRepository(this.api);
+
+  getCats() => api.getCats();
+  getDogs() => api.getDogs();
+  getAll() => api.getAll();
 }
