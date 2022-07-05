@@ -1,7 +1,8 @@
-import 'package:dev/app/data/services/app_config/service.dart';
-import 'package:dev/app/data/services/auth/service.dart';
-import 'package:dev/core/theme/app_theme.dart';
-import 'package:dev/routes/pages.dart';
+import 'package:example/app/data/services/app_config/service.dart';
+import 'package:example/app/data/services/auth/service.dart';
+import 'package:example/app/modules/login/binding.dart';
+import 'package:example/app/modules/login/page.dart';
+import 'package:example/routes/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,10 +14,12 @@ void main() async {
   await Get.putAsync(() => AuthService().init());
 
   runApp(GetMaterialApp(
+    home: LoginPage(),
+    initialBinding: LoginBinding(),
     initialRoute: Routes.LOGIN,
     getPages: AppPages.pages,
-    theme: GlobalTheme.globalTheme,
-    darkTheme: GlobalTheme.globalDarkTheme,
+    theme: ThemeData.light(),
+    darkTheme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
   ));
 }

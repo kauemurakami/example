@@ -1,4 +1,4 @@
-import 'package:dev/app/data/provider/api.dart';
+import 'package:example/app/data/provider/api.dart';
 
 class AuthRepository {
   final MyApi api;

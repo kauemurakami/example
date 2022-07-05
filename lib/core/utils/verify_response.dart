@@ -1,4 +1,4 @@
-import 'package:dev/app/data/models/app_error.dart';
+import 'package:example/app/data/models/app_error.dart';
 
 verifyresponse(_) {
   if (_.runtimeType == AppError) {

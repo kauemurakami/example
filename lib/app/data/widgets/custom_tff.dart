@@ -1,5 +1,3 @@
-import 'package:dev/app/data/services/app_config/service.dart';
-import 'package:dev/core/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

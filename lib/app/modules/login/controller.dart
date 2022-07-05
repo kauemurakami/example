@@ -1,10 +1,9 @@
-import 'package:dev/app/data/models/user.dart';
-import 'package:dev/app/data/services/app_config/service.dart';
-import 'package:dev/app/data/services/auth/service.dart';
-import 'package:dev/app/modules/login/repository.dart';
-import 'package:dev/core/utils/remove_splash.dart';
-import 'package:dev/core/utils/verify_response.dart';
-import 'package:dev/routes/pages.dart';
+import 'package:example/app/data/models/user.dart';
+import 'package:example/app/data/services/app_config/service.dart';
+import 'package:example/app/data/services/auth/service.dart';
+import 'package:example/app/modules/login/repository.dart';
+import 'package:example/core/utils/verify_response.dart';
+import 'package:example/routes/pages.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -12,34 +11,41 @@ class LoginController extends GetxController {
   LoginController(this.repository);
   final user = User().obs;
   final isEmail = false.obs;
-  final config = Get.find<AppConfigService>();
-  final auth = Get.find<AuthService>();
+  AppConfigService? config;
+  AuthService? auth;
   final darkMode = false.obs;
 
   @override
-  void onInit() {
-    removeSplash();
-
-    reauth();
-
+  void onInit() async {
+    config = Get.find<AppConfigService>();
+    auth = Get.find<AuthService>();
+    darkMode.value = config!.darkMode();
+    await reauth();
     super.onInit();
   }
 
+  changeTheme() {
+    config!.changeDarkMode(Get.isDarkMode ? false : true);
+    darkMode.value = config!.darkMode();
+  }
+
   reauth() async {
-    if (config.isLogged()) {
-      Get.offNamed(Routes.HOME);
-    }
+    await Future.delayed(Duration.zero, () {
+      if (config!.isLogged()) {
+        Get.offNamed(Routes.HOME);
+      }
+    });
   }
 
   login() async {
-    final _ = await auth.login(user.value.email);
+    final _ = await auth!.login(user.value.email);
     if (verifyresponse(_)) {
       Get.showSnackbar(GetSnackBar(
         message: _.message,
         duration: const Duration(seconds: 2),
       ));
     } else {
-      config.changeIsLogged(true);
+      config!.changeIsLogged(true);
       Get.offNamed(Routes.HOME);
     }
   }

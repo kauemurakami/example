@@ -1,9 +1,7 @@
-import 'package:dev/app/modules/login/controller.dart';
-import 'package:dev/app/widgets/custom_tff.dart';
-import 'package:dev/core/consts/consts.dart';
-import 'package:dev/core/theme/text_theme.dart';
-import 'package:dev/core/values/colors.dart';
-import 'package:dev/core/values/strings.dart';
+import 'package:example/app/data/widgets/custom_tff.dart';
+import 'package:example/app/modules/login/controller.dart';
+import 'package:example/core/theme/text_theme.dart';
+import 'package:example/core/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,20 +16,20 @@ class LoginPage extends GetView<LoginController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(),
-                Container(
-                    child: IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () => Get.changeTheme(ThemeData.dark()),
-                ))
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(),
+              IconButton(
+                  onPressed: () => controller.changeTheme(),
+                  icon: Obx(
+                    () => Icon(controller.darkMode.value
+                        ? Icons.light_mode
+                        : Icons.dark_mode),
+                  )),
+            ],
           ),
-          Expanded(child: Image.asset('${IMAGES}splash.png')),
+          Expanded(child: Container()),
           Expanded(
             flex: 3,
             child: Form(
@@ -42,7 +40,7 @@ class LoginPage extends GetView<LoginController> {
                   Obx(
                     () => CustomTffWidget(
                       marginTop: 16.0,
-                      text: EMAIL,
+                      text: 'E-mail',
                       onSaved: (_) => controller.onSavedEmail(_),
                       onChanged: (_) => controller.onChangeEmail(_),
                       onValidate: (_) => controller.onValidateEmail(_),
@@ -66,7 +64,7 @@ class LoginPage extends GetView<LoginController> {
                       color: tumbleweed,
                       splashColor: desert_sand,
                       child: const Text(
-                        ENTRAR,
+                        'Entrar',
                         style: text_white,
                       ),
                     ),

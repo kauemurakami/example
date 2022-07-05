@@ -1,7 +1,6 @@
-import 'package:dev/app/data/provider/api.dart';
-import 'package:dev/app/data/services/app_config/repository.dart';
-import 'package:dev/core/consts/consts.dart';
-import 'package:dev/core/theme/app_theme.dart';
+import 'package:example/app/data/provider/api.dart';
+import 'package:example/app/data/services/app_config/repository.dart';
+import 'package:example/core/values/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -22,14 +21,10 @@ class AppConfigService extends GetxService {
   isLogged() => box.read(IS_LOGGED);
   useremail() => box.read(USER_EMAIL);
 
-  changeDarkMode(_) {
-    print('change theme');
+  changeDarkMode(_) async {
     Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-    Get.changeTheme(
-        Get.isDarkMode ? GlobalTheme.globalTheme : GlobalTheme.globalDarkTheme);
-    print(Get.isDarkMode.toString());
-    print(_.toString());
-    box.write(DARK_MODE, _);
+    Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+    await box.write(DARK_MODE, _);
   }
 
   changeIsLogged(_) async => box.write(IS_LOGGED, _);
