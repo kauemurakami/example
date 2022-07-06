@@ -1,6 +1,6 @@
 # example
-
-```$ flutter run --release 
+```
+$ flutter run --release 
 ```
 
 app-release.apk se encontra na pasta do projeto
