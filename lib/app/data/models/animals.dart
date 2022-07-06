@@ -26,7 +26,7 @@ class Animals {
   dynamic height;
 
   factory Animals.fromJson(Map<String, dynamic> json) => Animals(
-        // breeds: List<dynamic>.from(json["breeds"].map((x) => x)),
+        breeds: List<dynamic>.from(json["breeds"].map((x) => x)),
         id: json["id"],
         url: json["url"],
         width: json["width"],

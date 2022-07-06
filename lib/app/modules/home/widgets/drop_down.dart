@@ -1,5 +1,6 @@
 import 'package:example/app/data/enum/animals.dart';
 import 'package:example/app/modules/home/controller.dart';
+import 'package:example/core/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,8 @@ class DropDownWidget extends GetView<HomeController> {
             color: Colors.white30,
           ),
           elevation: 16,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(
+              color: controller.darkMode.value ? Colors.black87 : white_smoke),
           underline: Container(
             height: 2,
             color: Colors.white30,
@@ -25,7 +27,13 @@ class DropDownWidget extends GetView<HomeController> {
               .map<DropdownMenuItem<Animals>>((Animals value) {
             return DropdownMenuItem<Animals>(
               value: value,
-              child: Text(value.toString().replaceAll('Animals.', '')),
+              child: Text(
+                value.toString().replaceAll('Animals.', ''),
+                style: TextStyle(
+                    color: controller.darkMode.value
+                        ? white_smoke
+                        : Colors.black87),
+              ),
             );
           }).toList(),
         ));

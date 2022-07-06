@@ -1,6 +1,21 @@
 # example
 
-A new Flutter project.
+```$ flutter run --release 
+```
+
+apk_release se encontra na pasta do projeto
+
+```
+x Troca de tema e armazenamento do tema escolhido
+x Login sendo persistido na memória ( opção de sair para limpar)
+x Chamada em paralelo para recuperação de ambas as API's
+x Fácil adaptação a novos providers por meio dos Repositorys
+x Navegação sem necessidade de contexto
+x Uso de apenas dois pacotes
+x Design pattern Getx Pattern
+x Zoom na imagem
+x Fácil troca do schema de cores e possibilidade de criação de dois temas diferentes perosnalizados pra modo claro e escuro
+```
 
 ## Getting Started
 

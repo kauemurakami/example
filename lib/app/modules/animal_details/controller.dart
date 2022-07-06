@@ -14,12 +14,4 @@ class AnimalDetailsController extends GetxController {
     animal.value = Get.arguments;
     super.onInit();
   }
-
-  getAnimal() async {
-    final _ = await repository.getAnimal(animal.value.id);
-    if (verifyresponse(_)) {
-    } else {
-      breeds.value = _;
-    }
-  }
 }

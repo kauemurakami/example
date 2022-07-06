@@ -22,7 +22,6 @@ class MyApi extends GetConnect {
     final _ = await get('$catsUrl/?limit=20&page=1&order=desc',
         decoder: (_) => _,
         headers: HeadersAPI(apiKey: CAT_API_KEY).getHeaders());
-    print(_.body);
     if (_.hasError) {
       return AppError.fromJson(_.body);
     } else {
@@ -34,6 +33,8 @@ class MyApi extends GetConnect {
     final _ = await get('$dogsUrl/?limit=20&page=1&order=desc',
         decoder: (_) => _,
         headers: HeadersAPI(apiKey: DOG_API_KEY).getHeaders());
+    print(_.body);
+
     if (_.hasError) {
       return AppError.fromJson(_.body);
     } else {
@@ -51,18 +52,5 @@ class MyApi extends GetConnect {
     });
     list.sort((a, b) => a.hashCode.compareTo(b.hashCode));
     return list;
-  }
-
-  getBreedsAnimals(id) async {
-    final _ = await get(
-        'https://api.thecatapi.com/v1/images/search?bread_id=$id',
-        headers: HeadersAPI(apiKey: CAT_API_KEY).getHeaders());
-    print(_.body);
-
-    if (_.hasError) {
-      return AppError.fromJson(_.body);
-    } else {
-      return BreedAnimal.fromJson(_.body);
-    }
   }
 }

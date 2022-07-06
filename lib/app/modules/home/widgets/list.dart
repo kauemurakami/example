@@ -16,37 +16,32 @@ class ListAnimalsWidget extends GetView<HomeController> {
             // itemCount: myProducts.length,
             itemCount: controller.state.length,
             itemBuilder: (BuildContext ctx, _) => GestureDetector(
-                  onTap: () => Get.toNamed(Routes.ANIMAL_DETAILS,
-                      arguments: controller.state[_]),
-                  child: FractionallySizedBox(
-                    heightFactor: 1,
-                    widthFactor: 1,
-                    child: Column(
-                      children: [
-                        Hero(
-                          tag: 'image',
-                          child: Image.network(
-                            controller.state[_].url,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes !=
-                                          null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                ),
-                              );
-                            },
-                            height: 120,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                      ],
-                    ),
+                onTap: () => Get.toNamed(Routes.ANIMAL_DETAILS,
+                    arguments: controller.state[_]),
+                child: FractionallySizedBox(
+                  heightFactor: 1,
+                  widthFactor: 1,
+                  child: Column(
+                    children: [
+                      Image.network(
+                        controller.state[_].url,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
+                        height: 120,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ],
                   ),
-                )));
+                ))));
   }
 }
