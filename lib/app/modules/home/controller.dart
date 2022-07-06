@@ -32,6 +32,26 @@ class HomeController extends GetxController with StateMixin {
     await Get.offAllNamed(Routes.LOGIN);
   }
 
+  getCats() async {
+    final _ = await repository.getCats();
+    if (verifyresponse(_)) {
+      change(_, status: RxStatus.error(_.message));
+      return Get.snackbar('Erro', _.message);
+    } else {
+      change(_, status: RxStatus.success());
+    }
+  }
+
+  getDogs() async {
+    final _ = await repository.getDogs();
+    if (verifyresponse(_)) {
+      change(_, status: RxStatus.error(_.message));
+      return Get.snackbar('Erro', _.message);
+    } else {
+      change(_, status: RxStatus.success());
+    }
+  }
+
   getAnimals() async {
     final _ = await repository.getAll();
     if (verifyresponse(_)) {
@@ -42,8 +62,18 @@ class HomeController extends GetxController with StateMixin {
     }
   }
 
-  selectAnimal(_) {
+  selectAnimal(Animals _) {
     type.value = _;
-    getAnimals();
+    switch (_) {
+      case Animals.Todos:
+        getAnimals();
+        break;
+      case Animals.Gatos:
+        getCats();
+        break;
+      case Animals.Cachorros:
+        getDogs();
+        break;
+    }
   }
 }

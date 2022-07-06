@@ -22,7 +22,7 @@ class DropDownWidget extends GetView<HomeController> {
             height: 2,
             color: Colors.white30,
           ),
-          onChanged: (Animals? _) => controller.selectAnimal(_),
+          onChanged: (Animals? _) => controller.selectAnimal(_!),
           items: <Animals>[Animals.Todos, Animals.Cachorros, Animals.Gatos]
               .map<DropdownMenuItem<Animals>>((Animals value) {
             return DropdownMenuItem<Animals>(
