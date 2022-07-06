@@ -15,6 +15,7 @@ x Navegação sem necessidade de contexto
 x Uso de apenas dois pacotes
 x Design pattern Getx Pattern
 x Zoom na imagem
+x Switch tipo de animais
 x Componentização de widgets
 x Fácil troca do schema de cores e possibilidade de criação de dois temas diferentes perosnalizados pra modo claro e escuro
 ```
