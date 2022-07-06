@@ -3,7 +3,7 @@
 ```$ flutter run --release 
 ```
 
-apk_release se encontra na pasta do projeto
+app-release.apk se encontra na pasta do projeto
 
 ```
 x Troca de tema e armazenamento do tema escolhido
@@ -14,6 +14,7 @@ x Navegação sem necessidade de contexto
 x Uso de apenas dois pacotes
 x Design pattern Getx Pattern
 x Zoom na imagem
+x Componentização de widgets
 x Fácil troca do schema de cores e possibilidade de criação de dois temas diferentes perosnalizados pra modo claro e escuro
 ```
 

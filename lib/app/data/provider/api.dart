@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:example/app/data/models/animals.dart';
 import 'package:example/app/data/models/app_error.dart';
-import 'package:example/app/data/models/breed_animal.dart';
 import 'package:example/app/data/models/user.dart';
 import 'package:example/core/utils/headers_api.dart';
 import 'package:example/core/values/consts.dart';
@@ -23,7 +22,7 @@ class MyApi extends GetConnect {
         decoder: (_) => _,
         headers: HeadersAPI(apiKey: CAT_API_KEY).getHeaders());
     if (_.hasError) {
-      return AppError.fromJson(_.body);
+      return AppError(message: 'Algum erro inesperado aconteceu');
     } else {
       return animalsFromJson(_.body);
     }
@@ -33,10 +32,9 @@ class MyApi extends GetConnect {
     final _ = await get('$dogsUrl/?limit=20&page=1&order=desc',
         decoder: (_) => _,
         headers: HeadersAPI(apiKey: DOG_API_KEY).getHeaders());
-    print(_.body);
 
     if (_.hasError) {
-      return AppError.fromJson(_.body);
+      return AppError(message: 'Algum erro inesperado aconteceu');
     } else {
       return animalsFromJson(_.body);
     }
@@ -45,8 +43,6 @@ class MyApi extends GetConnect {
   getAll() async {
     var list;
     await Future.wait<dynamic>([getCats(), getDogs()]).then((value) {
-      print(value.length);
-      print(value.runtimeType.toString());
       list = value.first;
       list.addAll(value.last);
     });
