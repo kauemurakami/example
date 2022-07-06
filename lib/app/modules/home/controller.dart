@@ -1,7 +1,7 @@
 import 'package:example/app/data/enum/animals.dart';
 import 'package:example/app/data/services/app_config/service.dart';
 import 'package:example/app/modules/home/repository.dart';
-import 'package:example/core/utils/verify_response.dart';
+import 'package:example/core/utils/functions/verify_response.dart';
 import 'package:example/core/values/consts.dart';
 import 'package:example/routes/pages.dart';
 import 'package:get/get.dart';

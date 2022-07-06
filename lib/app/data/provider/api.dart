@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:example/app/data/models/animals.dart';
 import 'package:example/app/data/models/app_error.dart';
+import 'package:example/app/data/models/breed_animal.dart';
 import 'package:example/app/data/models/user.dart';
 import 'package:example/core/utils/headers_api.dart';
 import 'package:example/core/values/consts.dart';
@@ -50,5 +51,18 @@ class MyApi extends GetConnect {
     });
     list.sort((a, b) => a.hashCode.compareTo(b.hashCode));
     return list;
+  }
+
+  getBreedsAnimals(id) async {
+    final _ = await get(
+        'https://api.thecatapi.com/v1/images/search?bread_id=$id',
+        headers: HeadersAPI(apiKey: CAT_API_KEY).getHeaders());
+    print(_.body);
+
+    if (_.hasError) {
+      return AppError.fromJson(_.body);
+    } else {
+      return BreedAnimal.fromJson(_.body);
+    }
   }
 }

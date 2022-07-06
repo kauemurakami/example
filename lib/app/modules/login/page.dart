@@ -1,6 +1,7 @@
 import 'package:example/app/modules/login/controller.dart';
 import 'package:example/app/modules/login/widgets/form.dart';
 import 'package:example/app/modules/login/widgets/top_section.dart';
+import 'package:example/core/utils/functions/size_config.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,8 @@ class LoginPage extends GetView<LoginController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
         body: SafeArea(
             child: Padding(

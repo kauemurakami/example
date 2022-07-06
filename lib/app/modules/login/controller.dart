@@ -2,7 +2,7 @@ import 'package:example/app/data/models/user.dart';
 import 'package:example/app/data/services/app_config/service.dart';
 import 'package:example/app/data/services/auth/service.dart';
 import 'package:example/app/modules/login/repository.dart';
-import 'package:example/core/utils/verify_response.dart';
+import 'package:example/core/utils/functions/verify_response.dart';
 import 'package:example/routes/pages.dart';
 import 'package:get/get.dart';
 
