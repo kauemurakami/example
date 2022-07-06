@@ -1,5 +1,6 @@
-# example
+# README
 ```
+$ flutter pub get 
 $ flutter run --release 
 ```
 
