@@ -4,6 +4,8 @@ $ flutter pub get
 $ flutter run --release 
 ```
 
+#### List emails ins lib/app/core/values/consts.dart
+
 app-release.apk se encontra na pasta do projeto
 
 ```
